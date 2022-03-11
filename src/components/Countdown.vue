@@ -21,13 +21,13 @@ const formatted = computed(() => {
 
     <div h-1px w-10 border="t base" mt4 mb6 mxa />
 
-    <div flex="~ col center" relative>
+    <!-- <div flex="~ col center" relative>
       <div op50 ws-nowrap>
         {{ t('next-note') }}
       </div>
       <div text-lg ws-nowrap style="font-variant-numeric: tabular-nums;">
         {{ formatted }}
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
