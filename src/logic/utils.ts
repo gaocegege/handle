@@ -142,3 +142,30 @@ export function numberToHanzi(number: number) {
     .replace(/零+/, '零')
     .replace(/(.)零$/, '$1')
 }
+
+let m_w = 123456789
+let m_z = 987654321
+const mask = 0xFFFFFFFF
+
+// Takes any integer
+export function seed(i: number) {
+  m_w = (123456789 + i) & mask
+  m_z = (987654321 - i) & mask
+}
+
+// Returns number between 0 (inclusive) and 1.0 (exclusive),
+// just like Math.random().
+function random() {
+  m_z = (36969 * (m_z & 65535) + (m_z >> 16)) & mask
+  m_w = (18000 * (m_w & 65535) + (m_w >> 16)) & mask
+  let result = ((m_z << 16) + (m_w & 65535)) >>> 0
+  result /= 4294967296
+  return result
+}
+
+export function randomNum(number: number, max: number) {
+  let result = 0
+  for (let i = 0; i < number; i++)
+    result = 29 + Math.floor(random() * (max - 0 + 1)) + 0
+  return result
+}

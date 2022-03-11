@@ -1,6 +1,6 @@
 import { breakpointsTailwind } from '@vueuse/core'
 import type { MatchType, ParsedChar } from './logic'
-import { START_DATE, TRIES_LIMIT, WORD_LENGTH, parseWord as _parseWord, testAnswer as _testAnswer, checkPass, getHint, numberToHanzi } from './logic'
+import { START_DATE, TRIES_LIMIT, WORD_LENGTH, parseWord as _parseWord, testAnswer as _testAnswer, checkPass, getHint, numberToHanzi, randomNum, seed } from './logic'
 import { useNumberTone as _useNumberTone, inputMode, meta, tries } from './storage'
 import { getAnswerOfDay } from './answers'
 
@@ -33,7 +33,9 @@ export const useNumberTone = computed(() => {
 const params = new URLSearchParams(window.location.search)
 export const isDev = import.meta.hot || params.get('dev') === 'hey'
 export const daySince = useDebounce(computed(() => Math.floor((+now.value - +START_DATE) / 86400000)))
-export const dayNo = ref(+(params.get('d') || daySince.value))
+seed(daySince.value)
+export const counter = ref(+(params.get('counter') || 1))
+export const dayNo = computed(() => randomNum(counter.value, 29502))
 export const dayNoHanzi = computed(() => `${numberToHanzi(dayNo.value)}日`)
 export const answer = computed(() =>
   params.get('word')
