@@ -150,9 +150,8 @@ watchEffect(() => {
       </Transition>
 
       <template v-if="isDev">
-        <div h-200 />
         <div op50 mb-2>
-          成语编号 ${dayNo}
+          成语编号 {{ dayNo }}
         </div>
         <div flex gap2>
           <a
