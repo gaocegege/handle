@@ -145,7 +145,6 @@ watchEffect(() => {
       <Transition name="fade-in">
         <div v-if="isFinishedDelay && isFinished">
           <ResultFooter />
-          <Countdown />
         </div>
       </Transition>
 
