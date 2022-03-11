@@ -36,7 +36,7 @@ export const daySince = useDebounce(computed(() => Math.floor((+now.value - +STA
 seed(daySince.value)
 export const counter = ref(+(params.get('counter') || 1))
 export const dayNo = computed(() => randomNum(counter.value, 775))
-export const dayNoHanzi = computed(() => `${numberToHanzi(dayNo.value)}日`)
+export const dayNoHanzi = computed(() => `成语编号${dayNo.value}`)
 export const answer = computed(() =>
   params.get('word')
     ? {
