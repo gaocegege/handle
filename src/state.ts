@@ -31,7 +31,7 @@ export const useNumberTone = computed(() => {
 })
 
 const params = new URLSearchParams(window.location.search)
-export const isDev = import.meta.hot || params.get('dev') === 'hey'
+export const isDev = true
 export const daySince = useDebounce(computed(() => Math.floor((+now.value - +START_DATE) / 86400000)))
 seed(daySince.value)
 export const counter = ref(+(params.get('counter') || 1))
